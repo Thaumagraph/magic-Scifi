@@ -1,14 +1,17 @@
 /* UNIVERSAL */
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
+
 :root {
   /* COLORS */
-  --primary: #e3e3e3;
-  --secondary: #cecece;
-  --accent: #3e3e3e;
-  --indent: #00000010;
+  --primary: #010609;
+  --secondary: #051f2f;
+  --accent: #ff9100;
+  --text: #ffffff;
+  --indent: #ffffff10;
   --scroll-bar-track: #00000010;
   --scroll-bar-thumb: #00000030;
   --scroll-bar-thumb-hover: #0000009a;
-  --active: #0099ff;
+  --active: #7fcbec;
 
   /* ATTRIBUTES */
   --rounded: 1rem;
@@ -18,6 +21,45 @@
   --standard: 500ms;
   --slow: 1000ms;
 }
+
+/* #region ANIMATIONS */
+
+@keyframes Vortex {
+  0% {
+    background-size: 100%;
+    background-position-x: center;
+    background-position-y: center;
+  }
+  50% {
+    background-size: 150%;
+    background-position-x: center;
+    background-position-y: center;
+  }
+  100% {
+    background-size: 100%;
+    background-position-x: center;
+    background-position-y: center;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    color: #ffffffcf;
+  }
+
+  3% {
+    color: #ffffff;
+  }
+
+  6% {
+    color: #ffffffcf;
+  }
+}
+
+@keyframes wave {
+  
+}
+/* #endregion */
 
 /* #region MODIFIER */
 /* #region INVERT */
@@ -31,6 +73,10 @@
   -webkit-filter: blur(0.3em);
   /* filter: blur(8px); */
 }
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
 /* #endregion */
 /* #endregion */
 
@@ -43,8 +89,9 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-family: "Major Mono Display", monospace;
 }
 
 #wrapper {
@@ -57,7 +104,7 @@ body {
   /* COLORS SCROLLBAR TOO */
   /* background-color: #ff0000; */
   width: 100%;
-  color: var(--accent);
+  color: var(--text);
 }
 
 main {
@@ -88,6 +135,7 @@ main {
 }
 /* #endregion */
 
+/* #region HEADER */
 /* #region HEADER & FOOTER*/
 header,
 footer {
@@ -135,7 +183,7 @@ nav a {
   border-radius: var(--rounded);
   background-color: var(--indent);
   padding: 1em;
-  color: var(--accent);
+  color: var(--text);
   text-decoration: none;
 }
 
@@ -145,7 +193,9 @@ nav a:hover {
   text-decoration: none;
 }
 /* #endregion */
+/* #endregion */
 
+/* #region MAIN*/
 /* #region CONTAINER */
 .container,
 section {
@@ -193,6 +243,7 @@ figure {
   position: relative;
   justify-content: center;
   align-items: center;
+  animation: vortex 10s infinite ease-in-out;
   width: 100%;
   height: 10em;
   overflow: hidden;
@@ -241,14 +292,29 @@ main > figure p {
 }
 /* #endregion */
 
-/* CUSTOM */
+/* #region CUSTOM */
 h1 {
+  -webkit-animation: Vortex 10s ease infinite;
+  -moz-animation: Vortex 10s ease infinite;
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
+  animation: Vortex 60s ease infinite;
+  background: radial-gradient(
+    circle,
+    #010609 50%,
+    #051f2f 70%,
+    #0d517b 90%,
+    #7fcbec 100%
+  );
+  background-size: 150% 150%;
   color: var(--accent);
   font-size: 3rem;
   text-align: center;
-  text-decoration: underline;
 }
+
+p {
+  animation: pulse 3s ease-in-out infinite;
+}
+/* #endregion */
